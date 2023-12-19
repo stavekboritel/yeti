@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nový Yetti{% endblock %}
+
+{% block body %}
+<h1 class="display-6 mb-4">Nový Yeti</h1>
+
+<div id="simpleform">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Jméno</th>
+            <th scope="col">Pohlaví</th>
+            <th scope="col">Váha</th>
+            <th scope="col">Výška</th>
+            <th scope="col">Rating</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for yeti in yetties %}
+        <tr>
+            <th scope="row">{{ yeti.id|e }}</td>
+            <td>{{ yeti.name|e }}</td>
+            <td>{{ yeti.sex.name|e }}</td>
+            <td>{{ yeti.weight|e }}</td>
+            <td>{{ yeti.height|e }}</td>
+            <td>{{ yeti.rating|e }}</td>
+            <td><a class="btn btn-secondary" href="{{ path('stats', {'id': yeti.id }) }}">Statistiky</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

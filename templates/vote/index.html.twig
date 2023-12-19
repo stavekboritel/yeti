@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detaily{% endblock %}
+
+{% block body %}
+<h1 class="display-6 mb-4">Hodnocení - {{ yeti.name|e }} (#{{ yeti.id|e }})</h1>
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row">Hodnocení</th>
+            <td>{{ yeti.rating|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Jméno</th>
+            <td>{{ yeti.name|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Pohlaví</th>
+            <td>{{ yeti.sex.name|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Váha</th>
+            <td>{{ yeti.weight|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Výška</th>
+            <td>{{ yeti.height|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <a href="{{ path('vote_decrement', {'id': yeti.id }) }}" class="btn btn-danger">Nelíbí</a>
+                <a href="{{ path('vote_increment', {'id': yeti.id }) }}" class="btn btn-success">Líbí</a>
+            </th>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

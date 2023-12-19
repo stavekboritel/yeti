@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detaily{% endblock %}
+
+{% block body %}
+<h1 class="display-6 mb-4">Yeti - {{ yeti.name|e }} (#{{ yeti.id|e }})</h1>
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row">Hodnocení</th>
+            <td>{{ yeti.rating|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Jméno</th>
+            <td>{{ yeti.name|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Pohlaví</th>
+            <td>{{ yeti.sex.name|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Váha</th>
+            <td>{{ yeti.weight|e }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Výška</th>
+            <td>{{ yeti.height|e }}</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 class="display-6 mb-4">Statistiky hodnocení po dnech</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Datum</th>
+            <th scope="col">Počet hodnocení</th>
+            <th scope="col">Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for record in stats %}
+        <tr>
+            <td>{{ record.day|e }}</td>
+            <td>{{ record.count|e }}</td>
+            <td>{{ record.rating|e }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
