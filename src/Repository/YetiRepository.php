@@ -25,6 +25,11 @@ class YetiRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Retrieve all Yetties ordered from latest
+     *
+     * @return array
+     */
     public function retrieveAllYetties()
     {
         return $this->createQueryBuilder('a')
@@ -36,6 +41,13 @@ class YetiRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Retrieve all records ordered by rating
+     *
+     * @param int limit
+     *
+     * @return array
+     */
     public function retrieveByRating(int $limit)
     {
         return $this->createQueryBuilder('y')
@@ -47,9 +59,13 @@ class YetiRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Retrieve random record
+     *
+     * @return \App\Entity\Yeti
+     */
     public function retrieveRandomRecord()
     {
-
         $numRecords = $this->createQueryBuilder('y')
             ->select('count(y.id)')
             ->getQuery()
@@ -66,28 +82,5 @@ class YetiRepository extends ServiceEntityRepository
         ;
     }
 
-//    /**
-//     * @return Yeti[] Returns an array of Yeti objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('y')
-//            ->andWhere('y.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('y.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Yeti
-//    {
-//        return $this->createQueryBuilder('y')
-//            ->andWhere('y.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
+

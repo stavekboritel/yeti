@@ -22,6 +22,13 @@ class YetiVotesRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Retrieve calculated rating from yeti_votes
+     *
+     * @param int yeti_id
+     *
+     * @return int|null
+     */
     public function getCalculatedRating(int $yeti_id)
     {
         return $this->createQueryBuilder('yv')
@@ -34,6 +41,13 @@ class YetiVotesRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Retrieve number of votes and rating per day
+     *
+     * @param int yeti_id
+     *
+     * @return array
+     */
     public function retrieveStatsByDay(int $yeti_id)
     {
         $conn = $this->_em->getConnection();

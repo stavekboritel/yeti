@@ -45,6 +45,12 @@ class VoteController extends AbstractController
     }
 
 
+    /**
+     * Save vote to yeti_votes and recalculate yeti's rating
+     *
+     * @param int yeti_id
+     * @param int vote value
+     */
     private function saveVoteAndRedirect(int $id, int $vote)
     {
         $yeti = $this->entityManager
